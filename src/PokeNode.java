@@ -7,5 +7,47 @@ public class PokeNode {
 	public PokeNode( Pokemon P, int numCaught, PokeNode lChild, PokeNode rChild) {
 		
 	}
+	
+	public Pokemon getPokemon() {
+		return Pokemon;
+	}
 
+	public int getKey() {
+		//This method will return the Pokemon species' number of the Pokemon in a given node. This is the key for the PokeTree.
+	}
+	
+	public int getNumCaught() {
+		//This method will return the numCaught from inside a given node
+	}
+	
+	public PokeNode getLChild() {
+		This method will return the left child of a given node
+	}
+	
+	public PokeNode getRChild( ) {
+		//this method will return the right child of a given node
+	}
+	
+	public void increaseNumCaught() {
+		//increment numCaught in a node
+	}
+	
+	public void decreaseNumCaught() {
+		//decrease num caught in a given node
+		//throw exception if it becomes < 1.
+	}
+	
+	public void setLChild(PokeNode newLChild) {
+		//This method will set newLNode as the left child of a node
+	}
+	
+	public void setRChild() {
+		//This method will set newRNode as the right child of a node
+
+	}
+	
+	//There is no public setPokemon method. We don't want anybody to change the species of 
+	//Pokemon in a node that is already part of the tree, this will break the Binary Search 
+	//Tree rules. You can make a private one as a helper method for removing if you want to.
+	
 }
