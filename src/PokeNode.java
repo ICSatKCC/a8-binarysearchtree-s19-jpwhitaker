@@ -56,11 +56,12 @@ public class PokeNode {
 	
 	public void setLeftChild(PokeNode newLeftChild) {
 		//This method will set newLNode as the left child of a node
+		left = newLeftChild;
 	}
 	
 	public void setRightChild(PokeNode newRightChild) {
 		//This method will set newRNode as the right child of a node
-
+		right = newRightChild;
 	}
 	
 	//There is no public setPokemon method. We don't want anybody to change the species of 

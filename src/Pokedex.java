@@ -33,7 +33,18 @@ public class Pokedex {
 		printMainMenu();
 		System.out.println("----------");
 		//adding a pokemon to a node
-		Pokemon chosenPokemon = PokemonFactory.pickAPokemon();
+		Pokemon chosenPokemon;
+		chosenPokemon = PokemonFactory.pickAPokemon();
+		tree.add(chosenPokemon);
+		System.out.println("Added pokemon to tree");
+		tree.preorderPokeTree();
+		
+		chosenPokemon = PokemonFactory.pickAPokemon();
+		tree.add(chosenPokemon);
+		System.out.println("Added pokemon to tree");
+		tree.preorderPokeTree();
+		
+		chosenPokemon = PokemonFactory.pickAPokemon();
 		tree.add(chosenPokemon);
 		System.out.println("Added pokemon to tree");
 		tree.preorderPokeTree();

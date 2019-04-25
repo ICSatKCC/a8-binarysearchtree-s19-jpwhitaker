@@ -33,14 +33,14 @@ public class PokeTree {
 		// base case: empty tree or end of a leaf
 		if (node == null) {
 			//really, set numCaught here??
-			return new PokeNode(item, 1 ,null, null);
+			return new PokeNode(item, item.getNumber() ,null, null);
 		}
 		// base case: duplicate node, so throw exception
 		else if (item.number == node.getKey()) {
 			//TODO just increment numCaught
 			System.out.println("duplicate");
 			return null;
-//			throw new TreeException("No duplicate items are allowed!");
+			//throw new TreeException("No duplicate items are allowed!");
 		}
 		// recursive case: if item is less than current node
 		// then move to left child node
@@ -79,7 +79,7 @@ public class PokeTree {
 		//Returns Pokemon object with number == searchKey.getNumber()
 		//Should throw an exception if Pokemon with number == searchKey.getNumber() not in the tree
 	}
-	
+
 	private Pokemon get(PokeNode node, Pokemon searchKey){
 		//Private recursive get method
 		//Returns Pokemon object with number == searchKey.getNumber()
@@ -95,7 +95,7 @@ public class PokeTree {
 		//The recursive method takes the root as a parameter and will print tree in preorder traversal.
 		//It is good for debugging purposes.
 		// You may copy and paste this into your PokeTree class.
-		System.out.println("here");
+
 		if(root != null){
 			System.out.println("  " + root.getPokemon( ).toString() + "\nCaught: "+root.getNumCaught( ) );
 			preorderPokeTree(root.getLeftChild());
