@@ -52,13 +52,14 @@ public class PokeNode {
 
 	public void increaseNumCaught() {
 		// increment numCaught in a node
-		numCaught++;
+//		System.out.println("INCREMENT NUM CAUGHT");
+		this.numCaught++;
 	}
 
 	public void decreaseNumCaught() {
 		// decrease num caught in a given node
 		// throw exception if it becomes < 1.
-		numCaught--;
+		this.numCaught--;
 		// TODO add exception if < 1;
 	}
 

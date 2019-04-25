@@ -29,21 +29,26 @@ public class PokeTree {
 	 * @return The current node
 	 */
 	private PokeNode add(PokeNode node, Pokemon item) {
+//		System.out.println("node key: " + node.getKey() + "Item Number: " + item.getNumber());
+//		System.out.println(node);
 		// base case: empty tree or end of a leaf
 		if (node == null) {
-			// really, set numCaught here??
+//			System.out.println("ROOT NODE");
 			return new PokeNode(item, 1, null, null);
 		}
 		// base case: duplicate node, so throw exception
-		else if (item.number == node.getKey()) {
+		else if (item.getNumber() == node.getKey()) {
+//			System.out.println("node key: " + node.getKey() + "Item Number: " + item.getNumber());
 			// TODO just increment numCaught
+//			System.out.println("INCREMENT NUM CAUGHT");
 			node.increaseNumCaught();
-			return null;
+			return node;
 			// throw new TreeException("No duplicate items are allowed!");
 		}
 		// recursive case: if item is less than current node
 		// then move to left child node
 		else if (item.number < node.getKey()) {
+//			System.out.println("LEFT NODE");
 			// set the node's left child to the
 			// left subtree with item added
 			node.setLeftChild(this.add(node.getLeftChild(), item));
@@ -52,6 +57,7 @@ public class PokeTree {
 		// recursive case: if item is greater than current node
 		// then traverse to right child node
 		else {
+			System.out.println("RIGHT NODE");
 			// set the node's right child to the
 			// right subtree with item added
 			node.setRightChild(this.add(node.getRightChild(), item));
@@ -269,7 +275,7 @@ public class PokeTree {
 		String displayNodes = "";
 		if (node != null) {
 			displayNodes = displayNodes + this.printPokeTree(node.getLeftChild());
-			displayNodes = displayNodes + node.getPokemon().toString() + "\n";
+			displayNodes = displayNodes  + root.getPokemon().toString() + "\nCaught: " + root.getNumCaught() + "\n";
 			displayNodes = displayNodes + this.printPokeTree(node.getRightChild());
 		}
 
