@@ -79,20 +79,27 @@ public class PokeTree {
 		//Returns Pokemon object with number == searchKey.getNumber()
 		//Should throw an exception if Pokemon with number == searchKey.getNumber() not in the tree
 	}
-
-	public void printPokeTree() {
-		//Overloaded wrapper method in order to access private data field root to send to recursive method.
+	
+	private Pokemon get(PokeNode node, Pokemon searchKey){
+		//Private recursive get method
+		//Returns Pokemon object with number == searchKey.getNumber()
+		//Should throw an exception if Pokemon with number == searchKey.getNumber() not in the tree
 	}
 
-	private void printPokeTree(PokeNode root){
+	public void preorderPokeTree() {
+		//Overloaded wrapper method in order to access private data field root to send to recursive method.
+		preorderPokeTree(this.root);
+	}
+
+	private void preorderPokeTree(PokeNode root){
 		//The recursive method takes the root as a parameter and will print tree in preorder traversal.
 		//It is good for debugging purposes.
 		// You may copy and paste this into your PokeTree class.
-
+		System.out.println("here");
 		if(root != null){
 			System.out.println("  " + root.getPokemon( ).toString() + "\nCaught: "+root.getNumCaught( ) );
-			preorderPokeTree(root.getLChild());
-			preorderPokeTree(root.getRChild());
+			preorderPokeTree(root.getLeftChild());
+			preorderPokeTree(root.getRightChild());
 		}
 	}
 

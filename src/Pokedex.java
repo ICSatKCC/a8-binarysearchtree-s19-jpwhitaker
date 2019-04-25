@@ -36,6 +36,7 @@ public class Pokedex {
 		Pokemon chosenPokemon = PokemonFactory.pickAPokemon();
 		tree.add(chosenPokemon);
 		System.out.println("Added pokemon to tree");
+		tree.preorderPokeTree();
 	}
 
 	/**

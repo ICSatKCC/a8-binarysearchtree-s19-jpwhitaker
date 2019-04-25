@@ -21,25 +21,28 @@ public class PokeNode {
 	}
 	
 	public Pokemon getPokemon() {
-		return Pokemon;
+		return data;
 	}
 
 	public int getKey() {
 		//This method will return the Pokemon species' number of the Pokemon in a given node. This is the key for the PokeTree.
-		return data.number;
+		return data.getNumber();
 	}
 	
 	
 	public int getNumCaught() {
 		//This method will return the numCaught from inside a given node
+		return numCaught;
 	}
 	
 	public PokeNode getLeftChild() {
-		This method will return the left child of a given node
+		//		This method will return the left child of a given node
+		return this.left;
 	}
 	
 	public PokeNode getRightChild( ) {
 		//this method will return the right child of a given node
+		return this.right;
 	}
 	
 	public void increaseNumCaught() {
