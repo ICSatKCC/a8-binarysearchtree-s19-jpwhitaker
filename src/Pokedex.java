@@ -36,17 +36,17 @@ public class Pokedex {
 		Pokemon chosenPokemon;
 		chosenPokemon = PokemonFactory.pickAPokemon();
 		tree.add(chosenPokemon);
-		System.out.println("Added pokemon to tree");
+		
 		tree.preorderPokeTree();
 		
 		chosenPokemon = PokemonFactory.pickAPokemon();
 		tree.add(chosenPokemon);
-		System.out.println("Added pokemon to tree");
+		
 		tree.preorderPokeTree();
 		
 		chosenPokemon = PokemonFactory.pickAPokemon();
 		tree.add(chosenPokemon);
-		System.out.println("Added pokemon to tree");
+		
 		tree.preorderPokeTree();
 	}
 
