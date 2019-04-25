@@ -1,11 +1,23 @@
-import pokemon.*;
 
 public class PokeNode {
 //	Pokemon should be a non-null object.
 //	numCaught should be >= 1.
 //	lChild and rChild are PokeNodes. They may or not be null depending on your implementation.
+	
+	/** Data held in Node. */
+	private Pokemon data;
+	/** Link to left child Node. */
+	private PokeNode left;
+	/** Link to right child Node. */
+	private PokeNode right;
+	/** Number of this type caught */
+	private int numCaught = 0;
+	
 	public PokeNode( Pokemon P, int numCaught, PokeNode lChild, PokeNode rChild) {
-		
+		data = P;
+		left = lChild;
+		right = rChild;
+		this.numCaught = numCaught; 
 	}
 	
 	public Pokemon getPokemon() {
@@ -14,17 +26,19 @@ public class PokeNode {
 
 	public int getKey() {
 		//This method will return the Pokemon species' number of the Pokemon in a given node. This is the key for the PokeTree.
+		return data.number;
 	}
+	
 	
 	public int getNumCaught() {
 		//This method will return the numCaught from inside a given node
 	}
 	
-	public PokeNode getLChild() {
+	public PokeNode getLeftChild() {
 		This method will return the left child of a given node
 	}
 	
-	public PokeNode getRChild( ) {
+	public PokeNode getRightChild( ) {
 		//this method will return the right child of a given node
 	}
 	
@@ -37,11 +51,11 @@ public class PokeNode {
 		//throw exception if it becomes < 1.
 	}
 	
-	public void setLChild(PokeNode newLChild) {
+	public void setLeftChild(PokeNode newLeftChild) {
 		//This method will set newLNode as the left child of a node
 	}
 	
-	public void setRChild() {
+	public void setRightChild(PokeNode newRightChild) {
 		//This method will set newRNode as the right child of a node
 
 	}
