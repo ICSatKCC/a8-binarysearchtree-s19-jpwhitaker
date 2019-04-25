@@ -34,20 +34,28 @@ public class Pokedex {
 		System.out.println("----------");
 		//adding a pokemon to a node
 		Pokemon chosenPokemon;
-		chosenPokemon = PokemonFactory.pickAPokemon();
+
+		chosenPokemon = PokemonFactory.createPokemon(1, "");
+		tree.add(chosenPokemon);
+
+		chosenPokemon = PokemonFactory.createPokemon(4, "");
 		tree.add(chosenPokemon);
 		
-		tree.preorderPokeTree();
+		chosenPokemon = PokemonFactory.createPokemon(3, "");
+		tree.add(chosenPokemon);		
 		
-		chosenPokemon = PokemonFactory.pickAPokemon();
+		chosenPokemon = PokemonFactory.createPokemon(2, "");
 		tree.add(chosenPokemon);
 		
-		tree.preorderPokeTree();
-		
-		chosenPokemon = PokemonFactory.pickAPokemon();
+		chosenPokemon = PokemonFactory.createPokemon(5, "");
 		tree.add(chosenPokemon);
 		
-		tree.preorderPokeTree();
+		chosenPokemon = PokemonFactory.createPokemon(6, "");
+		tree.add(chosenPokemon);
+		
+		tree.preOrderPokeTree();
+		System.out.println("-------");
+		tree.printPokeTree();
 	}
 
 	/**
