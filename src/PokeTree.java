@@ -59,20 +59,132 @@ public class PokeTree {
 		}
 	}
 
+	/**
+	 * Removes an item from the tree.
+	 * 
+	 * @param p An pokemon storing the key to remove.
+	 */
 	public void remove(Pokemon p) {
 		// Hint: Do this part last, it is hardest because you have to reorder the tree
 		// Wrapper method that calls recursive remove method with root
+		root = this.remove(root, p);
 	}
 
+	/**
+	 * Recursively removes an item from the tree.
+	 * 
+	 * @param node       The root of the tree/subtree
+	 * @param searchKey4 An object storing only the key to remove.
+	 * @return root of current subtree.
+	 * @throws TreeException if item not found in tree.
+	 */
 	private PokeNode remove(PokeNode node, Pokemon p) {
 		// Hint: Do this part last, it is hardest because you have to reorder the tree
 		// decrements numCaught
 		// Removes Pokemon p from the tree if numCaught == 0
 		// Throws exception if p not in the tree
-
+		// if item not found, throw exception
+		if (node == null) {
+			throw new TreeException("Item not found!");
+		}
+		// if search key is less than node's search key,
+		// continue to left subtree
+		else if (p.getNumber() < node.getKey()) {
+			node.setLeftChild(this.remove(node.getLeftChild(), p));
+			return node;
+		}
+		// if search key is greater than node's search key,
+		// continue to right subtree
+		else if ( p.getNumber() > node.getKey() ) {
+			node.setRightChild(this.remove(node.getRightChild(), p));
+			return node;
+		}
+		// found node containing object with same search key,
+		// so delete it
+		else {
+			// call private method remove
+			node = this.remove(node);
+			return node;
+		}
 	}
 
+	/**
+	 * Helper method that takes a node out of tree.
+	 * 
+	 * @param node The node to remove
+	 * @return The node that replaces removed node or null.
+	 */
+	private PokeNode remove(PokeNode node) {
+		// if node is a leaf,return null
+		if (node.getLeftChild() == null && node.getRightChild() == null) {
+			return null;
+		}
+		// if node has a single right child node,
+		// then return a reference to the right child node
+		else if (node.getLeftChild() == null) {
+			return node.getRightChild();
+		}
+		// if node has a single left child node,
+		// then return a reference to the left child node
+		else if (node.getRightChild() == null) {
+			return node.getLeftChild();
+		}
+		// if the node has two child nodes
+		else {
+			// get next Smaller Item, which is Largest Item in Left Subtree
+			// The next Smaller Item is stored at the rightmost node in the left
+			// subtree.
+			Pokemon largestItemInLeftSubtree = this.getItemWithLargestSearchKey(node
+					.getLeftChild());
+			// TODO replace the node's item with this item
+			node.setPokemon(largestItemInLeftSubtree);
+			// delete the rightmost node in the left subtree
+			node.setLeftChild(this.removeNodeWithLargestSearchKey(node
+					.getLeftChild()));
+			return node;
+		}
+	}
 	
+	  /**
+	   * Returns the item with the largest search key in the (sub)tree.
+	   * Helper method for removing interior nodes.
+	   * @param node The root of the tree/subtree
+	   * @return The data item with largest key
+	   */
+	   private Pokemon getItemWithLargestSearchKey(PokeNode node) {
+	   // if no right child, then this node contains the largest item
+	      if (node.getRightChild() == null) {
+	         return node.getPokemon();
+	      }
+	      // if not, keep looking on the right
+	      else {
+	         return this.getItemWithLargestSearchKey(node.getRightChild());
+	      }
+	   }
+
+	  /**
+	   * Removes the node with the largest search key.
+	   * Helper method for removing interior nodes.
+	   * Remove the node formerly occupied by item with largest search key.
+	   * To be called after item is moved to new node location.
+	   * 
+	   * @param node The root of the tree/subtree
+	   * @return root of (sub)tree with node removed.
+	   */
+	   private PokeNode removeNodeWithLargestSearchKey(PokeNode node) {
+	   // if no right child, then this node contains the largest item
+	   // so replace it with its left child
+	      if (node.getRightChild() == null) {
+	         return node.getLeftChild();
+	      }
+	      // if not, keep looking on the right
+	      else {
+	         node.setRightChild(this.removeNodeWithLargestSearchKey(node
+	             .getRightChild()));
+	         return node;
+	      }
+	   }
+
 
 	/**
 	 * gets an item from the tree with the same search key.
@@ -140,11 +252,11 @@ public class PokeTree {
 			preOrderPokeTree(root.getRightChild());
 		}
 	}
-	
+
 	public void printPokeTree() {
 		// Overloaded wrapper method in order to access private data field root to send
 		// to recursive method.
-		System.out.println( printPokeTree(this.root));
+		System.out.println(printPokeTree(this.root));
 	}
 
 	/**
@@ -160,7 +272,7 @@ public class PokeTree {
 			displayNodes = displayNodes + node.getPokemon().toString() + "\n";
 			displayNodes = displayNodes + this.printPokeTree(node.getRightChild());
 		}
-		
+
 		return displayNodes;
 	}
 
