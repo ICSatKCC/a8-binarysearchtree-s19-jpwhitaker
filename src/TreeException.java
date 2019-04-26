@@ -1,7 +1,7 @@
 /**
- * An exception class for use with For use with class BinarySearchTree.
+ * An exception class for use with For use with class PokeTreee.
  * 
- * @author William McDaniel Albritton
+ * @author JPW
  */
 public class TreeException extends RuntimeException {
    /**

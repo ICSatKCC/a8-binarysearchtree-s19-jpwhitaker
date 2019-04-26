@@ -117,7 +117,6 @@ public class PokeTree {
 
       // if node is a leaf,return null
       if (node.getLeftChild() == null && node.getRightChild() == null) {
-
          return null;
       }
       // if node has a single right child node,

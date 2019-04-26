@@ -85,12 +85,12 @@ public class PokeNode {
 
    /** Public method decreaseNumCaught.
    * called when removing extra pokemon from node.
-   * @throws TreeException if count is less than one.
+   * @throws NodeException if count is less than one.
    */
-   public void decreaseNumCaught() throws TreeException {
+   public void decreaseNumCaught() throws NodeException {
       this.numCaught--;
       if (this.numCaught < 0) {
-         throw("numCaught can't be less than one!");
+         throw new NodeException("numCaught can't be less than one!");
       }
    }
    
