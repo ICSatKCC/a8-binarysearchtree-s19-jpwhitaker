@@ -287,7 +287,7 @@ public class PokeTree {
 		String displayNodes = "";
 		if (node != null) {
 			displayNodes = displayNodes + this.printPokeTree(node.getLeftChild());
-			displayNodes = displayNodes  + root.getPokemon().toString() + "\nCaught: " + root.getNumCaught() + "\n";
+			displayNodes = displayNodes  + node.getPokemon().toString() + "\nCaught: " + node.getNumCaught() + "\n";
 			displayNodes = displayNodes + this.printPokeTree(node.getRightChild());
 		}
 
