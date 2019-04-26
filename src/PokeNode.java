@@ -1,83 +1,113 @@
-
+/**
+* Pokemon Node has a Pokemon as data.
+* Also contains a left and right node and amt caught.
+* @author JP Whitaker
+* @since 4/20/19
+*/
 public class PokeNode {
-	// Pokemon should be a non-null object.
-	// numCaught should be >= 1.
-	// lChild and rChild are PokeNodes. They may or not be null depending on your
-	// implementation.
 
-	/** Data held in Node. */
-	private Pokemon data;
-	/** Link to left child Node. */
-	private PokeNode left;
-	/** Link to right child Node. */
-	private PokeNode right;
-	/** Number of this type caught */
-	private int numCaught = 0;
+   /** Data held in Node. */
+   private Pokemon data;
+   /** Link to left child Node. */
+   private PokeNode left;
+   /** Link to right child Node. */
+   private PokeNode right;
+   /** Number of this type caught. */
+   private int numCaught = 0;
 
-	public PokeNode(Pokemon P, int numCaught, PokeNode lChild, PokeNode rChild) {
-		data = P;
-		left = lChild;
-		right = rChild;
-		this.numCaught = numCaught;
-	}
+   /**
+   * PokeNode, node with Pokemon payload.
+   * 
+   * @param p Pokemon class.
+   * @param numCaught used so you don't add duplicates in tree
+   * @param lChild left child node
+   * @param rChild right child node
+   */
+   public PokeNode(Pokemon p, int numCaught, PokeNode lChild, PokeNode rChild) {
+      /** Data payload is always a Pokemon object. */
+      data = p;
+      /** Left child PokeNode. */
+      left = lChild;
+      /** Right child PokeNode. */
+      right = rChild;
+      this.numCaught = numCaught;
+   }
 
-	public Pokemon getPokemon() {
-		return data;
-	}
+   /** Public method returns data payload. 
+   * @return Pokemon the payload from node
+   */
+   public Pokemon getPokemon() {
+      return data;
+   }
+   
+   /** Public method setPokemon. 
+   * Allowed per class discussion.
+   * @param p Pokemon to add
+   */
+   public void setPokemon(Pokemon p) {
+      data = p;
+   }
 
-	public void setPokemon(Pokemon p) {
-		data = p;
-	}
+   /** Public method getKey returns key which is == pokemon number.
+   * @return int key
+   */
+   public int getKey() {
+      return data.getNumber();
+   }
+   
+   /** Public method getNumCaught.
+   * @return int number of pokemon in same node.
+   */
+   public int getNumCaught() {
+      return numCaught;
+   }
 
-	public int getKey() {
-		// This method will return the Pokemon species' number of the Pokemon in a given
-		// node. This is the key for the PokeTree.
-		return data.getNumber();
-	}
+   /** Public method getLeftChild().
+   * @return PokeNode this node's left child node.
+   */
+   public PokeNode getLeftChild() {
+      return this.left;
+   }
 
-	public int getNumCaught() {
-		// This method will return the numCaught from inside a given node
-		return numCaught;
-	}
+   /** Public method getRightChild().
+   * @return PokeNode this node's right child node.
+   */
+   public PokeNode getRightChild() {
+      return this.right;
+   }
+   
+   /** Public method increaseNumCaught, 
+   * called when adding same pokemon to node.
+   */
+   public void increaseNumCaught() {
+      this.numCaught++;
+   }
 
-	public PokeNode getLeftChild() {
-		// This method will return the left child of a given node
-		return this.left;
-	}
+   /** Public method decreaseNumCaught.
+   * called when removing extra pokemon from node.
+   * @throws TreeException if count is less than one.
+   */
+   public void decreaseNumCaught() throws TreeException {
+      this.numCaught--;
+      if (this.numCaught < 0) {
+         throw("numCaught can't be less than one!");
+      }
+   }
+   
+   /** Public method setLeftChild.
+   *  Sets newNode as left child of a node
+   * @param newLeftChild is the node to be added.
+   */
+   public void setLeftChild(PokeNode newLeftChild) {
+      left = newLeftChild;
+   }
 
-	public PokeNode getRightChild() {
-		// this method will return the right child of a given node
-		return this.right;
-	}
-
-	public void increaseNumCaught() {
-		// increment numCaught in a node
-//		System.out.println("INCREMENT NUM CAUGHT");
-		this.numCaught++;
-	}
-
-	public void decreaseNumCaught() {
-		// decrease num caught in a given node
-		// throw exception if it becomes < 1.
-		this.numCaught--;
-		// TODO add exception if < 1;
-	}
-
-	public void setLeftChild(PokeNode newLeftChild) {
-		// This method will set newLNode as the left child of a node
-		left = newLeftChild;
-	}
-
-	public void setRightChild(PokeNode newRightChild) {
-		// This method will set newRNode as the right child of a node
-		right = newRightChild;
-	}
-
-	// There is no public setPokemon method. We don't want anybody to change the
-	// species of
-	// Pokemon in a node that is already part of the tree, this will break the
-	// Binary Search
-	// Tree rules. You can make a private one as a helper method for removing if you
-	// want to.
+   /** Public method setRightChild.
+   *  Sets newNode as right child of a node
+   * @param newRightChild is the node to be added.
+   */
+   public void setRightChild(PokeNode newRightChild) {
+      right = newRightChild;
+   }
 
 }
