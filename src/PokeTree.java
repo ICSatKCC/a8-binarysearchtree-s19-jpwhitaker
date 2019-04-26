@@ -265,7 +265,9 @@ public class PokeTree {
 		// You may copy and paste this into your PokeTree class.
 
 		if (root != null) {
-			System.out.println("  " + root.getPokemon().toString() + "\nCaught: " + root.getNumCaught());
+			
+			System.out.println("\n" + root.getPokemon().toString() + "\nCaught: " + root.getNumCaught() + "\n\n");
+			System.out.println();
 			preOrderPokeTree(root.getLeftChild());
 			preOrderPokeTree(root.getRightChild());
 		}
@@ -274,7 +276,14 @@ public class PokeTree {
 	public void printPokeTree() {
 		// Overloaded wrapper method in order to access private data field root to send
 		// to recursive method.
-		System.out.println(printPokeTree(this.root));
+		String output = printPokeTree(this.root);
+		
+		if (output == "") {
+			output = "No pokemon to display!  Go catch some!";
+		}
+
+		System.out.println(output);
+		
 	}
 
 	/**
@@ -287,10 +296,9 @@ public class PokeTree {
 		String displayNodes = "";
 		if (node != null) {
 			displayNodes = displayNodes + this.printPokeTree(node.getLeftChild());
-			displayNodes = displayNodes  + node.getPokemon().toString() + "\nCaught: " + node.getNumCaught() + "\n";
+			displayNodes = displayNodes  + node.getPokemon().toString() + "\nCaught: " + node.getNumCaught() + "\n\n";
 			displayNodes = displayNodes + this.printPokeTree(node.getRightChild());
 		}
-
 		return displayNodes;
 	}
 

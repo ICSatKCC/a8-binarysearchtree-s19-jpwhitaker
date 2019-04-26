@@ -44,16 +44,19 @@ public class PokemonFactory {
 	    * printChoices prints the menu for the user.
 	   */
 	   public static void printChoices() {
-	      System.out.println("Choose a Pokemon to add:");
-	      System.out.println("1 for Bulbasaur");
-	      System.out.println("2 for Ivysaur");
-	      System.out.println("3 for Venusaur");
-	      System.out.println("4 for Charmander");
-	      System.out.println("5 for Charmeleon");
-	      System.out.println("6 for Charizard");
-	      System.out.println("7 for Squirtle");
-	      System.out.println("8 for Wartortle");
-	      System.out.println("9 for Blastoise");
+		  System.out.println();
+		  System.out.println("+----------------------------+");
+	      System.out.println("|  Choose a Pokemon:         |");
+	      System.out.println("|  1 for Bulbasaur           |");
+	      System.out.println("|  2 for Ivysaur             |");
+	      System.out.println("|  3 for Venusaur            |");
+	      System.out.println("|  4 for Charmander          |");
+	      System.out.println("|  5 for Charmeleon          |");
+	      System.out.println("|  6 for Charizard           |");
+	      System.out.println("|  7 for Squirtle            |");
+	      System.out.println("|  8 for Wartortle           |");
+	      System.out.println("|  9 for Blastoise           |");
+		  System.out.println("+----------------------------+");
 	   };
 	
 	public static Pokemon pickAPokemon() {
@@ -61,6 +64,15 @@ public class PokemonFactory {
 		Integer choice = makeChoice();
 		String name = getName();
 		chosenPokemon = createPokemon(choice, name);
+
+		return chosenPokemon;
+	}
+	
+	//overloaded method no name needed for trading pokemon
+	public static Pokemon pickAPokemon(boolean chooseName) {
+		Pokemon chosenPokemon; 
+		Integer choice = makeChoice();
+		chosenPokemon = createPokemon(choice, "");
 
 		return chosenPokemon;
 	}
@@ -72,12 +84,16 @@ public class PokemonFactory {
 	public static String getName() {
 		String hasNameInput = "";
 		Scanner userIn = new Scanner(System.in);
-		System.out.println("Does the Pokemon have a name Y/N?");
+		System.out.println("+-------------------------------------+");
+		System.out.println("|  Does the Pokemon have a name Y/N?  |");
+		System.out.println("+-------------------------------------+");
 		hasNameInput = userIn.nextLine();
 		String name = "";
 
-		if (hasNameInput.equals("Y")) {
-			System.out.println("What is the Pokemon's name?");
+		if (hasNameInput.equals("Y") || hasNameInput.equals("y")) {
+			System.out.println("+-------------------------------+");
+			System.out.println("|  What is the Pokemon's name?  |");
+			System.out.println("+-------------------------------+");
 			name =  userIn.nextLine();
 		}
 		return name;
