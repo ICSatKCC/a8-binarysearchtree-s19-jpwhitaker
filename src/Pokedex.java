@@ -62,13 +62,26 @@ public class Pokedex {
 
 		chosenPokemon = PokemonFactory.createPokemon(6, "");
 		tree.add(chosenPokemon);
+		
 
+		chosenPokemon = PokemonFactory.createPokemon(8, "");
+		tree.add(chosenPokemon);
+		
+		
+		System.out.println("-------");
+		chosenPokemon = PokemonFactory.createPokemon(7, "");
+		tree.add(chosenPokemon);
 		tree.preOrderPokeTree();
 		System.out.println("-------");
+		tree.remove(chosenPokemon);
+		tree.preOrderPokeTree();
+
+//		tree.preOrderPokeTree();
+//		System.out.println("-------");
 //		tree.printPokeTree();
-		System.out.println("-------");
+//		System.out.println("-------");
 //		tree.remove(PokemonFactory.createPokemon(1, ""));
-//		tree.printPokeTree();
+//		tree.preOrderPokeTree();
 
 	}
 

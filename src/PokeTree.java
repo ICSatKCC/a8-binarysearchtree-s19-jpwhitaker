@@ -57,7 +57,7 @@ public class PokeTree {
 		// recursive case: if item is greater than current node
 		// then traverse to right child node
 		else {
-			System.out.println("RIGHT NODE");
+//			System.out.println("RIGHT NODE");
 			// set the node's right child to the
 			// right subtree with item added
 			node.setRightChild(this.add(node.getRightChild(), item));
@@ -90,9 +90,11 @@ public class PokeTree {
 		// Removes Pokemon p from the tree if numCaught == 0
 		// Throws exception if p not in the tree
 		// if item not found, throw exception
+		
 		if (node == null) {
 			throw new TreeException("Item not found!");
 		}
+
 		// if search key is less than node's search key,
 		// continue to left subtree
 		else if (p.getNumber() < node.getKey()) {
@@ -108,6 +110,14 @@ public class PokeTree {
 		// found node containing object with same search key,
 		// so delete it
 		else {
+			//if its the correct node and it has more that one caught,
+			//decrease numCaught
+//			System.out.println("NumCaught" + node.getNumCaught());
+			if(node.getNumCaught() > 1) {
+				node.decreaseNumCaught();
+				return node;
+			}
+			
 			// call private method remove
 			node = this.remove(node);
 			return node;
@@ -121,8 +131,10 @@ public class PokeTree {
 	 * @return The node that replaces removed node or null.
 	 */
 	private PokeNode remove(PokeNode node) {
+		
 		// if node is a leaf,return null
 		if (node.getLeftChild() == null && node.getRightChild() == null) {
+			
 			return null;
 		}
 		// if node has a single right child node,
